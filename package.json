@@ -19,7 +19,9 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "migration:generate": "drizzle-kit generate:pg",
-    "migration:push": "drizzle-kit push:pg"
+    "migration:push": "drizzle-kit push:pg",
+    "seed": "node -r esbuild-register ./src/drizzle/seed.ts",
+    "drizzle-studio": "drizzle-kit studio"
   },
   "dependencies": {
     "@nestjs/cache-manager": "^2.2.2",

@@ -6,6 +6,12 @@ import { Config } from './config';
 import { DrizzleModule } from './drizzle/drizzle.module';
 import { CacheModule } from '@nestjs/cache-manager';
 import { LoggerModule } from 'nestjs-pino';
+import { ProductsModule } from './products/products.module';
+import { CategoriesModule } from './categories/categories.module';
+import { ProductFeaturesModule } from './product_features/product_features.module';
+import { ProductLabelsModule } from './product_labels/product_labels.module';
+import { ProductUseCasesModule } from './product_use_cases/product_use_cases.module';
+import { StandardsModule } from './standards/standards.module';
 import * as redisStore from 'cache-manager-redis-store';
 
 @Module({
@@ -50,6 +56,12 @@ import * as redisStore from 'cache-manager-redis-store';
       store: redisStore,
       url: process.env.REDIS_URL,
     }),
+    ProductsModule,
+    CategoriesModule,
+    ProductFeaturesModule,
+    ProductLabelsModule,
+    ProductUseCasesModule,
+    StandardsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
