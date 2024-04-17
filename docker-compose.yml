@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db:
+    container_name: ${APP_NAME}-postgresql
+    image: postgres:alpine
+    restart: unless-stopped
+    ports:
+      - ${DATABASE_PORT}:5432
+    environment:
+      - POSTGRES_DB=${APP_NAME}
+      - POSTGRES_USER=${APP_NAME}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    command: ['postgres', '-c', 'log_statement=all']
+    volumes:
+      - ${DATABASE_DOCKER_VOLUME}:/var/lib/postgresql/data
+  redis:
+    container_name: ${APP_NAME}-redis
+    image: redis:alpine3.19
+    restart: unless-stopped
+    ports:
+      - ${REDIS_PORT}:6379
